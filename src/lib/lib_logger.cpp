@@ -16,15 +16,15 @@ Logger& Logger::init(const std::string& journal_name, const MsgLvl& msg_lvl) {
 void Logger::change_lvl(const MsgLvl& msg_lvl) { *default_msg_lvl_ = msg_lvl; }
 
 std::string Logger::get_time() const {
-  // Получаем текущее время
+  // РџРѕР»СѓС‡Р°РµРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
   auto now = std::chrono::system_clock::now();
-  // Преобразуем в time_t
+ // РџСЂРµРѕР±СЂР°Р·СѓРµРј РІ time_t
   std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-  // Преобразуем в локальное время
+   // РџСЂРµРѕР±СЂР°Р·СѓРµРј РІ Р»РѕРєР°Р»СЊРЅРѕРµ РІСЂРµРјСЏ
   std::tm* now_tm = std::localtime(&now_c);
-  // Создаем строковый поток для форматирования времени
+   // РЎРѕР·РґР°РµРј СЃС‚СЂРѕРєРѕРІС‹Р№ РїРѕС‚РѕРє РґР»СЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ РІСЂРµРјРµРЅРё
   std::ostringstream oss;
-  // Форматируем дату и время
+   // Р¤РѕСЂРјР°С‚РёСЂСѓРµРј РґР°С‚Сѓ Рё РІСЂРµРјСЏ
   oss << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
 
   return oss.str();
