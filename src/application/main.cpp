@@ -1,17 +1,17 @@
 #include "logger_client.h"
 
 int main(int argc, char* argv[]) {
-  // Необходимо три агрумента: ./logger_client [log_name] [INFO or WARNING or
+// РќРµРѕР±С…РѕРґРёРјРѕ С‚СЂРё Р°РіСЂСѓРјРµРЅС‚Р°: ./logger_client [log_name] [INFO or WARNING or
   // ERROR]
   if (argc < 3) {
     std::cout << "Incorrect input data. Example: logger_client [log_name] "
                  "[INFO or WARNING or ERROR]\n";
   } else {
     auto [is_lvl_correct, lvl] = lvl_check(argv[2]);
-    if (is_lvl_correct) {  // Если уровень важности корректен, то начинается
-                           // работа программы.
+    if (is_lvl_correct) {  // Р•СЃР»Рё СѓСЂРѕРІРµРЅСЊ РІР°Р¶РЅРѕСЃС‚Рё РєРѕСЂСЂРµРєС‚РµРЅ, С‚Рѕ РЅР°С‡РёРЅР°РµС‚СЃСЏ
+                           // СЂР°Р±РѕС‚Р° РїСЂРѕРіСЂР°РјРјС‹.
       Logger& logger =
-          Logger::init(argv[1], lvl);  // имя журнала и уровень по умолчанию
+          Logger::init(argv[1], lvl);   // РёРјСЏ Р¶СѓСЂРЅР°Р»Р° Рё СѓСЂРѕРІРµРЅСЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
       LoggerClient loggerClient(logger);
 
       std::thread reader(&LoggerClient::read_msg, &loggerClient);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
       reader.join();
       writer.join();
-    } else {  // Если уровень некорректен
+    } else { // Р•СЃР»Рё СѓСЂРѕРІРµРЅСЊ РЅРµРєРѕСЂСЂРµРєС‚РµРЅ
       std::cout << "Input lvl not exists. Example: logger_client [log_name] "
                    "[INFO or WARNING or ERROR]\n";
     }
