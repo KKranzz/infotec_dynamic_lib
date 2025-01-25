@@ -1,4 +1,4 @@
-# Переменные
+# РџРµСЂРµРјРµРЅРЅС‹Рµ
 CXX := g++
 CXXFLAGS := -Wall -Werror -Wextra
 LIB_SRC := ./lib/lib_logger.cpp
@@ -8,12 +8,12 @@ APP_SRC := ./application/main.cpp ./application/logger_client.cpp
 APP_BIN := ./build/logger_client
 BUILD_DIR := ./build
 
-# Цели
+# Р¦РµР»Рё
 .PHONY: all clean rebuild lib
 
 all: lib app
 
-# Цель для библиотеки
+# Р¦РµР»СЊ РґР»СЏ Р±РёР±Р»РёРѕС‚РµРєРё
 lib: $(LIB_SO)
 
 $(BUILD_DIR):
@@ -25,7 +25,7 @@ $(LIB_OBJ): $(LIB_SRC) | $(BUILD_DIR)
 $(LIB_SO): $(LIB_OBJ)
 	$(CXX) -shared -o $(LIB_SO) $(LIB_OBJ)
 
-# Цель для приложения
+# Р¦РµР»СЊ РґР»СЏ РїСЂРёР»РѕР¶РµРЅРёСЏ
 app: $(LIB_SO) $(APP_BIN)
 
 $(APP_BIN): $(APP_SRC) | $(BUILD_DIR)
